@@ -1,12 +1,18 @@
-import { Outlet } from 'react-router';
+import { Outlet, useNavigation } from 'react-router';
 import { useTheme } from './ThemeContext';
 import TopNavbar from './TopNavbar';
 import LeftSidebar from './LeftSidebar';
 
 const AppLayout = () => {
   const { isDark } = useTheme();
+  const navigation = useNavigation();
+  const isLoading = navigation.state === 'loading';
+
   return (
     <div className={`flex flex-col min-h-screen ${isDark ? 'bg-[#13151a]' : 'bg-gray-100'}`}>
+      {isLoading && (
+        <div className="h-0.5 bg-red-600 animate-pulse fixed top-0 left-0 right-0 z-50" />
+      )}
       <TopNavbar />
       <div className="flex flex-1 min-h-0">
         <LeftSidebar />

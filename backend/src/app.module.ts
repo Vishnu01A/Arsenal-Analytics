@@ -6,6 +6,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { PlayersModule } from './modules/players/players.module';
 import { StandingsModule } from './modules/standings/standings.module';
+import { SquadModule } from './modules/squad/squad.module';
 
 const envSchema = z.object({
   DATABASE_HOST: z.string().min(1),
@@ -41,6 +42,7 @@ const envSchema = z.object({
     }),
     PlayersModule,
     StandingsModule,
+    SquadModule,
   ],
   controllers: [AppController],
   providers: [AppService],
